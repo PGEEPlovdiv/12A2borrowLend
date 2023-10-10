@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PyrvoZadanie", "PyrvoZadanie\PyrvoZadanie.csproj", "{9365EB71-9065-40D4-8A8B-0FE3080859D9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9365EB71-9065-40D4-8A8B-0FE3080859D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9365EB71-9065-40D4-8A8B-0FE3080859D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9365EB71-9065-40D4-8A8B-0FE3080859D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9365EB71-9065-40D4-8A8B-0FE3080859D9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3E30AAA4-1A56-471A-A9CA-AE270B1233D3}
+	EndGlobalSection
+EndGlobal
