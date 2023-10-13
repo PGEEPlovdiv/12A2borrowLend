@@ -47,8 +47,10 @@
                             @Html.DisplayFor(modelItem => item.Lender)
                         </td>
                         <td width="25%">
-                            <a class="btn btn-success m-1" asp-controller="Item" asp-action="Update" asp-route-id=@item.Id>Update</a>
-                            <a class="btn btn-danger m-1" asp-controller="Item" asp-action="Delete" asp-route-id=@item.Id>Delete</a>
+                            <a class="btn btn-success m-1" asp-controller="Item" asp-action="Edit" asp-route-id=@item.Id>Update</a>
+                            <form asp-action="Delete" method="post" style="width:fit-content; display:inline">
+                                <button type="submit" class="btn btn-danger m-1" asp-controller="Item" asp-action="Delete" asp-route-id=@item.Id>Delete</button>
+                            </form>     
                         </td>
                     </tr>
                 }

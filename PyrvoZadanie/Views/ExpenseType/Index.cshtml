@@ -1,0 +1,48 @@
+﻿@model IEnumerable<PyrvoZadanie.Models.ExpenseType>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">
+                Expense Types List
+            </h2>
+        </div>
+        <div class="col-6 text-right" style="text-align:right;">
+            <a class="btn btn-primary w-50" asp-controller="ExpenseType" asp-action="Create">Add expense</a>
+        </div>
+    </div>
+    <br />
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ExpenseTypeName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ExpenseTypeName)
+                        </td>
+                        <td>
+                            <a class="btn btn-success m-1" asp-controller="ExpenseType" asp-action="Edit" asp-route-id=@item.Id>Update</a>
+                            <form asp-action="Delete" method="post" style="width:fit-content; display:inline">
+                                <button type="submit" class="btn btn-danger m-1" asp-controller="ExpenseType" asp-action="Delete" asp-route-id=@item.Id>Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

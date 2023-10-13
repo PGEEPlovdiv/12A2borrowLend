@@ -4,18 +4,17 @@ using PyrvoZadanie.Models;
 
 namespace PyrvoZadanie.Controllers
 {
-    public class ItemController : Controller
+    public class ExpenseTypeController : Controller
     {
         private readonly ApplicationDbContext _db;
-        public ItemController(ApplicationDbContext db)
+        public ExpenseTypeController(ApplicationDbContext db)
         {
             _db = db;
         }
+
         public IActionResult Index()
         {
-            IEnumerable<Item> items = _db.Items;
-
-            return View(items);
+            return View();
         }
         [HttpGet]
         public IActionResult Create()
@@ -23,10 +22,9 @@ namespace PyrvoZadanie.Controllers
             return View();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create(Item item)
+        public IActionResult Create(ExpenseType expenseT)
         {
-            _db.Items.Add(item);
+            _db.ExpenseTypes.Add(expenseT);
             _db.SaveChanges();
 
             return RedirectToAction("Index");
@@ -34,22 +32,22 @@ namespace PyrvoZadanie.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var item = _db.Items.Find(id);
-            return View(item);
+            var expenseT = _db.ExpenseTypes.Find(id);
+
+            return View(expenseT);
         }
         [HttpPost]
-        public IActionResult Edit(Item item)
+        public IActionResult Edit(ExpenseType expenseT)
         {
-            _db.Update(item);
+            _db.ExpenseTypes.Update(expenseT);
             _db.SaveChanges();
+
             return RedirectToAction("Index");
         }
         [HttpPost]
         public IActionResult Delete(int id)
         {
-            var item = _db.Items.Find(id);
-            _db.Items.Remove(item);
-            _db.SaveChanges();
+            _db.ExpenseTypes.Remove(_db.ExpenseTypes.Find(id));
 
             return RedirectToAction("Index");
         }

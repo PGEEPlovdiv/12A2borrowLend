@@ -6,6 +6,7 @@
 
 <h1>Create</h1>
 <form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="row">
         <div class="col-12">
             <div class="form-group row">
@@ -20,7 +21,7 @@
             </div>
             <div class="form-group row">
                 <button type="submit" class="col-3 btn btn-success m-1">Save</button>
-                <button asp-action="Index" class="col-3 btn btn-danger m-1">Back</button>
+                <a asp-action="Index" class="col-3 btn btn-danger m-1">Back</a>
             </div>
         </div>
     </div>

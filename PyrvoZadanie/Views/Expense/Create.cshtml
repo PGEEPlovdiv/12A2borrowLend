@@ -1,0 +1,18 @@
+﻿@model PyrvoZadanie.ViewModels.ExpenseViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<form method="post" asp-action="Create">
+    <h1>Create new expense</h1>
+
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
