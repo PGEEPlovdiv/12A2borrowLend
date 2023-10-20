@@ -1,4 +1,4 @@
-﻿@model PyrvoZadanie.Models.Expense
+﻿@model PyrvoZadanie.ViewModels.ExpenseViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -10,22 +10,32 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="ExpenseName" class="control-label"></label>
-                <input asp-for="ExpenseName" class="form-control" />
-                <span asp-validation-for="ExpenseName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Amount" class="control-label"></label>
-                <input asp-for="Amount" class="form-control" />
-                <span asp-validation-for="Amount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
+            <input type="hidden" asp-for="Expense.Id"/>
+            <table>
+                <thead>
+                    <tr>
+                        <th width="30%">Expense name</th>
+                        <th width="30%">Amount</th>
+                        <th width="30%">Expense type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td width="30%"><input asp-for="Expense.ExpenseName" /></td>
+                        <td width="30%"><input asp-for="Expense.Amount" /></td>
+                        <td width="30%">
+                            <select asp-for="Expense.ExpenseTypeId" asp-items="@Model.TypeDropDown" class="form-comntrol">
+                                <option select>--Select Expense Type--</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><button type="submit" class="btn btn-success">Edit</button></td>
+                    </tr>
+                </tbody>
+            </table>
         </form>
     </div>
 </div>

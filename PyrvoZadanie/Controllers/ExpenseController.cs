@@ -17,7 +17,7 @@ namespace PyrvoZadanie.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(_db.Expenses);
         }
         [HttpGet]
         public IActionResult Create()
@@ -35,24 +35,37 @@ namespace PyrvoZadanie.Controllers
             return View(viewModel);
         }
         [HttpPost]
-        public IActionResult Create(Expense expense)
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(ExpenseViewModel expenseVM)
         {
-            _db.Expenses.Add(expense);
-            _db.SaveChanges();
-
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _db.Expenses.Add(expenseVM.Expense);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(expenseVM);
         }
         [HttpGet]
         public IActionResult Edit(int id)
         {
             var expense = _db.Expenses.Find(id);
+            ExpenseViewModel viewModel = new ExpenseViewModel
+            {
+                Expense = expense,
+                TypeDropDown = _db.ExpenseTypes.Select(i => new SelectListItem
+                {
+                    Text = i.ExpenseTypeName,
+                    Value = i.Id.ToString()
+                })
+            };
 
-            return View(expense);
+            return View(viewModel);
         }
         [HttpPost]
-        public IActionResult Edit(Expense expense)
+        public IActionResult Edit(ExpenseViewModel expenseVm)
         {
-            _db.Expenses.Update(expense);
+            _db.Update(expenseVm.Expense);
             _db.SaveChanges();
 
             return RedirectToAction("Index");
@@ -61,6 +74,7 @@ namespace PyrvoZadanie.Controllers
         public IActionResult Delete(int id)
         {
             _db.Expenses.Remove(_db.Expenses.Find(id));
+            _db.SaveChanges();
 
             return RedirectToAction("Index");
         }

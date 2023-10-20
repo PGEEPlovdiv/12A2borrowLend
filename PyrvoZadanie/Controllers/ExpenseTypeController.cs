@@ -14,7 +14,7 @@ namespace PyrvoZadanie.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(_db.ExpenseTypes);
         }
         [HttpGet]
         public IActionResult Create()
@@ -47,7 +47,14 @@ namespace PyrvoZadanie.Controllers
         [HttpPost]
         public IActionResult Delete(int id)
         {
+            var removedExpenses = _db.Expenses.Where(x => x.ExpenseTypeId == id).ToList();
+            foreach (var x in removedExpenses)
+            {
+                _db.Expenses.Remove(x);
+            }
+
             _db.ExpenseTypes.Remove(_db.ExpenseTypes.Find(id));
+            _db.SaveChanges();
 
             return RedirectToAction("Index");
         }

@@ -6,7 +6,29 @@
 
 <form method="post" asp-action="Create">
     <h1>Create new expense</h1>
-
+    <table>
+        <thead>
+            <tr>
+                <th width="30%">Expense name</th>
+                <th width="30%">Amount</th>
+                <th width="30%">Expense type</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td width="30%"><input asp-for="Expense.ExpenseName" /></td>
+                <td width="30%"><input asp-for="Expense.Amount" /></td>
+                <td width="30%">
+                    <select asp-for="Expense.ExpenseTypeId" asp-items="@Model.TypeDropDown" class="form-comntrol">
+                        <option select>--Select Expense Type--</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><button type="submit" class="btn btn-success">Create</button></td>
+            </tr>
+        </tbody>
+    </table>
 </form>
 
 @section Scripts {

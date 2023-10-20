@@ -25,6 +25,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Amount)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ExpenseType.ExpenseTypeName)
+                </th>
                 <th></th>
             </tr>
         </thead>
@@ -40,6 +43,9 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Amount)
                         </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ExpenseTypeId)
+                        </td>
                         <td width="25%">
                             <a class="btn btn-success m-1" asp-controller="Expense" asp-action="Edit" asp-route-id=@item.Id>Update</a>
                             <form asp-action="Delete" method="post" style="width:fit-content; display:inline">
@@ -51,4 +57,7 @@
             }
         </tbody>
     </table>
+</div>
+<div class="col-1 text-right" style="text-align:right;">
+    <a class="btn btn-info" asp-controller="ExpenseType" asp-action="Index">Expense Types</a>
 </div>
